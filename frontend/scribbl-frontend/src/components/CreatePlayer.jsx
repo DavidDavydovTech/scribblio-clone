@@ -6,41 +6,55 @@ class CreatePlayer extends React.Component {
         super(props);
 
         this.state = {
-            refs: {
-                name: React.createRef()
-            },
+            name: "",
+            nameError: ""
         }
     }
 
-    preparePlayerObject = () => {
-        let name = this.state.refs.name.current.value;
-        switch (true) {
-            case typeof name === 'number':
-                name.toString();
-            case typeof name !== 'string':
-                name = 'undefined';
-                console.warn('Warning: Name was not a string. Assigning player a name of "undefined" instead.');
-            case name.length < 3:
-                // TODO: Add error handling for this form.
-            case name.length > 12:
-                // TODO: Add error handling for this form.
-            // TODO: Add a check to see if user has a curse word in their name.
-        }
+    handleChange = (event) => {
+        this.setState({[event.target.id]: event.target.value});
+    }
 
-        this.props.onSubmit(name);
+    // checkInput = (valueName) => {
+    //     let value = this.state[valueName];
+
+    //     if (valueName === "name") {
+    //         switch (true) {
+    //             case value.length < 3:
+    //                 // TODO: Add error handling for this form.
+    //             case value.length > 12:
+    //                 // TODO: Add error handling for this form.
+    //             // TODO: Add a check to see if user has a curse word in their name.
+    //         }
+    //     }
+    // }
+
+    submitData = () => {
+        this.props.onSubmit({
+            name: this.state.name
+        });
     }   
 
     render () { return (
         <Card>
             <Card.Body className="align-content-center">
                 <Form>
-                    <Form.Group controlId="playerInfo">
+                    <Form.Group>
                         <Form.Label>Player Name</Form.Label>
-                        <Form.Control ref={this.state.refs.name} type="username" placeholder="SuperMan67" />
+                        <Form.Control 
+                            id = "name"
+                            value={this.state.name}
+                            onChange={this.handleChange}
+                            type="username" 
+                            placeholder="we" 
+                        />
+                        <Form.Text className="text-muted">
+                            {this.nameError}
+                        </Form.Text>
                     </Form.Group>
                 </Form>
 
-                <Button onClick={this.preparePlayerObject}>click me</Button>
+                <Button onClick={this.submitData}>click me</Button>
             </Card.Body>
         </Card>
     );}
