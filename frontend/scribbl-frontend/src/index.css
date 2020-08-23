@@ -16,3 +16,7 @@ code {
   background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
   min-height: 100vh;
 }
+
+.card {
+  filter:drop-shadow(5px 5px 10px rgba(0,0,0,0.3));
+}
