@@ -1,39 +1,49 @@
 import React from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 
+let randomName = require('random-name');
+
 class CreatePlayerForm extends React.Component {
     constructor (props) {
         super(props);
 
         this.state = {
-            name: "",
+            name: `${randomName.first()}`,
             nameError: ""
         }
     }
 
     handleChange = (event) => {
-        this.setState({[event.target.id]: event.target.value});
+        let newValue = this.checkInput(event.target.id, event.target.value)
+        this.setState({[event.target.id]: newValue});
     }
 
-    checkInput = (valueName) => {
-        let value = this.state[valueName];
+    checkInput = (valueName, newValue) => {
 
-        if (valueName === "name") {
-            switch (true) {
-                case value.length < 3:
-                    // TODO: Add error handling for this form.
-                case value.length > 12:
-                    // TODO: Add error handling for this form.
-                // TODO: Add a check to see if user has a curse word in their name.
+        if (valueName === 'rounds') {
+            if (typeof valueName !== 'string') {
+                return this.state[valueName];
+            } else if (valueName.length < 3) {
+                this.setState({[valueName + "Error"]: "Your name must be at least 3 characters long!"});
+            } else if (valueName.length > 14) {
+                this.setState({[valueName + "Error"]: "Your name can't be longer than 14 characters long!"});
+            } else {
+                this.setState({[valueName + "Error"]: ""});
             }
-        }
+        } 
+
+        return newValue;
     }
 
     submitData = () => {
-        this.props.onSubmit({
-            name: this.state.name
-        });
-    }   
+        if (this.state.nameError.length === 0) {
+                this.props.onSubmit({
+                    name: this.state.name,
+                });
+        } else {
+            alert("Error, could not submit!")
+        }
+    }
 
     render () { return (
         <Card>
@@ -45,8 +55,7 @@ class CreatePlayerForm extends React.Component {
                             id = "name"
                             value={this.state.name}
                             onChange={this.handleChange}
-                            type="username" 
-                            placeholder="we" 
+                            placeholder="Bob" 
                         />
                         <Form.Text className="text-muted">
                             {this.nameError}
@@ -54,7 +63,7 @@ class CreatePlayerForm extends React.Component {
                     </Form.Group>
                 </Form>
 
-                <Button onClick={this.submitData}>click me</Button>
+                <Button onClick={this.submitData}>Create Player</Button>
             </Card.Body>
         </Card>
     );}
