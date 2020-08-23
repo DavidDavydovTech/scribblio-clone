@@ -18,17 +18,20 @@ function App() {
   return (
     <Router>
     {/* <Link to="/modus-create">Modus Create</Link> */}
-      <Container className="background">
-        <Switch>
-          <Route path="/create">
-            <CreateLobby/>
-          </Route>
+      <Container style={{height: "100vh"}} className="d-flex background">
+        <Row style={{width: "100%"}} className="m-1 d-flex align-self-center justify-content-center">
+          <Switch>
+            <Route path="/create">
+              <CreateLobby/>
+            </Route>
 
-          <Route path="/lobby/:id">
-            <Game/>
-          </Route>
+            <Route path="/lobby/:id">
+              <Game/>
+            </Route>
 
-        </Switch>
+          </Switch>
+        </Row>
+        
       </Container>
     </Router>
   );

@@ -21,7 +21,7 @@ class CreateLobbyPage extends React.Component {
         this.setState({gameObject: object});
     }
 
-    render () { return (<Row className="d-flex justify-content-center">
+    render () { return (<>
         <Col xs={"auto"}>
             <h1>Create a Lobby!</h1>
         </Col>
@@ -31,7 +31,7 @@ class CreateLobbyPage extends React.Component {
             <CreatePlayer onSubmit={this.updatePlayerObject}/>
             <CreateGameForm onSubmit={this.updateGameObject}/>
         </Col>
-    </Row>) }
+    </>) }
 }
 
 export default CreateLobbyPage;
