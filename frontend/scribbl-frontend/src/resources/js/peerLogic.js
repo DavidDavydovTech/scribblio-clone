@@ -37,6 +37,15 @@ class Host {
 
             },
         };
+
+        this._gameVars = {
+            eventName: "lobby",// Used to determine what the game is currently doing/emitting to the players.
+            eventTimeStart: 0, // When the even started.
+            eventTimeLeft: 0, // How much time is left until this event ends and the next one begins.
+        }
+
+        this._gameEmits = []; // List of things to emit to everyone.
+        this._gameIncoming = []; // List of things that need to be proccessed.
     }
 
     InitHost ()  {
@@ -58,7 +67,7 @@ class Host {
         } else {
             this._gameTickFunc = () => {
                 if(this._gameRunning) {
-                    setTimeout(GameTick, 1000/33);
+                    setTimeout(this.GameTick, 1000/33);
                 }
             }
     
@@ -66,7 +75,27 @@ class Host {
         }
     }
 
-    Game
+    GameUpdateTimeLeft () {
+
+    }
+
+    GameNextEvent () {
+        let vars = this._gameVars;
+        let event = this._gameVars.eventName;
+        
+        if (event === "pick") { // pick = The drawer is currently picking a word.
+            vars.eventName = "play";
+
+        } if (event === "play") { // play = people are currently drawing and guessing. 
+            vars.eventName = "result";
+
+        } else if (event === "result") { // result = people are currently reviewing the result of the last play event
+            vars.eventName = "pick";
+
+        }
+        vars.eventTimeStart = Date.now();
+    }
+    
 }
 // Peer code here:
 
