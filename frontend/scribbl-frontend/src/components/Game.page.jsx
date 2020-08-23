@@ -5,17 +5,23 @@ class LobbyBrowser extends React.Component {
         super();
 
         this.state = {
-            canvas: {
-                
-            }
+            canvasRef:  React.createRef(),
+            canvasContext: null,
         }
+    }
+
+    componentDidMount () {
+        let context = this.state.canvasRef.current.getContext('2d');
+        context.fillStyle = '#000000'
+        context.fillRect(0, 0, context.canvas.width, context.canvas.height)
+        this.setState({canvasContext: context})
     }
 
     render () {return(<>
         <Container>
             <Row>
                 <Col>
-                    <canvas className="white-board"></canvas>
+                    <canvas ref={this.state.canvasRef} className="white-board"></canvas>
                 </Col>
             </Row>
         </Container>
