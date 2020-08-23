@@ -20,10 +20,6 @@ function App() {
     {/* <Link to="/modus-create">Modus Create</Link> */}
       <Container className="background">
         <Switch>
-          <Route path="/joinLobby/id">
-            <Game/>
-          </Route>
-
           <Route path="/create">
             <CreateLobby/>
           </Route>
