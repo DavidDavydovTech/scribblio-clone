@@ -6,15 +6,22 @@ class LobbyBrowser extends React.Component {
 
         this.state = {
             canvasRef:  React.createRef(),
-            canvasContext: null,
+            ctx: null,
+            el: null,
         }
     }
 
     componentDidMount () {
+        this.initalizeCanvas();
+    }
+
+    initalizeCanvas () {
         let context = this.state.canvasRef.current.getContext('2d');
-        context.fillStyle = '#000000'
-        context.fillRect(0, 0, context.canvas.width, context.canvas.height)
-        this.setState({canvasContext: context})
+        let element = this.state.canvasRef.current;
+        this.setState({
+            ctx: context, 
+            el: element
+        });
     }
 
     render () {return(<>
