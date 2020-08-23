@@ -15,17 +15,18 @@ import Game from './components/Game.page';
 import CreateLobby from './components/CreateLobby.page';
 
 function App() {
+  let peer
   return (
     <Router>
     {/* <Link to="/modus-create">Modus Create</Link> */}
       <Container style={{height: "100vh"}} className="d-flex background">
         <Row style={{width: "100%"}} className="m-1 d-flex align-self-center justify-content-center">
           <Switch>
-            <Route path="/create">
+            <Route path="/" exact={true}>
               <CreateLobby/>
             </Route>
 
-            <Route path="/lobby/:id">
+            <Route path="/*:id">
               <Game/>
             </Route>
 
