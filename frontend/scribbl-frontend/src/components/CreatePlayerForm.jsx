@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 
-class CreatePlayer extends React.Component {
+class CreatePlayerForm extends React.Component {
     constructor (props) {
         super(props);
 
@@ -15,19 +15,19 @@ class CreatePlayer extends React.Component {
         this.setState({[event.target.id]: event.target.value});
     }
 
-    // checkInput = (valueName) => {
-    //     let value = this.state[valueName];
+    checkInput = (valueName) => {
+        let value = this.state[valueName];
 
-    //     if (valueName === "name") {
-    //         switch (true) {
-    //             case value.length < 3:
-    //                 // TODO: Add error handling for this form.
-    //             case value.length > 12:
-    //                 // TODO: Add error handling for this form.
-    //             // TODO: Add a check to see if user has a curse word in their name.
-    //         }
-    //     }
-    // }
+        if (valueName === "name") {
+            switch (true) {
+                case value.length < 3:
+                    // TODO: Add error handling for this form.
+                case value.length > 12:
+                    // TODO: Add error handling for this form.
+                // TODO: Add a check to see if user has a curse word in their name.
+            }
+        }
+    }
 
     submitData = () => {
         this.props.onSubmit({
@@ -60,4 +60,4 @@ class CreatePlayer extends React.Component {
     );}
 }
 
-export default CreatePlayer;
+export default CreatePlayerForm;

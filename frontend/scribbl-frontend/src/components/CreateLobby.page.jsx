@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Card, Button, Form } from 'react-bootstrap';
-import CreatePlayer from './CreatePlayer';
-import CreateLobby from './CreateLobby';
+import CreatePlayer from './CreatePlayerForm';
+// import CreateLobby from './CreateLobby';
 
 class CreateLobbyPage extends React.Component {
     constructor (props) {
@@ -13,6 +13,7 @@ class CreateLobbyPage extends React.Component {
     }
 
     updatePlayerObject = (object) => {
+        console.log(object)
         this.setState({playerObject: object});
     }
 
@@ -20,7 +21,7 @@ class CreateLobbyPage extends React.Component {
         <Col>
             <h1>Create a Lobby!</h1>
             <CreatePlayer onSubmit={this.updatePlayerObject}/>
-            <CreateLobby/>
+            {/* <CreateLobby/> */}
         </Col>
     </Row>) }
 }
