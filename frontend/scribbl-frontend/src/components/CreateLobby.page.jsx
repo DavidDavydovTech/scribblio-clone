@@ -1,9 +1,11 @@
 import React from 'react';
 import { Row, Col, Card, Button, Form } from 'react-bootstrap';
-class LobbyBrowser extends React.Component {
+class createLobby extends React.Component {
     constructor () {
         super();
     }
+
+
 
     render () { return (<Row>
         <Col>
@@ -17,11 +19,11 @@ class LobbyBrowser extends React.Component {
                         </Form.Group>
                     </Form>
 
-                    <Button>click me</Button>
+                    <Button onClick={}>click me</Button>
                 </Card.Body>
             </Card>
         </Col>
     </Row>) }
 }
 
-export default LobbyBrowser;
+export default createLobby;
