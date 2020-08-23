@@ -80,7 +80,10 @@ class CreateGameForm extends React.Component {
 
     // TODO: Make mapping function, you could combine this component and CreatePlayerForm in to 1 dynamic component!
     render () { return (
-        <Card>
+        <Card className="m-4">
+            <Card.Header className="text-center">
+                Lobby Options
+            </Card.Header>
             <Card.Body className="align-content-center">
                 <Form>
                     <Form.Group>

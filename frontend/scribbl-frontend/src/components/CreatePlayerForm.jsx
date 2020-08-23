@@ -45,7 +45,10 @@ class CreatePlayerForm extends React.Component {
     }
 
     render () { return (
-        <Card>
+        <Card className="m-4">
+            <Card.Header className="text-center">
+                Lobby Options
+            </Card.Header>
             <Card.Body className="align-content-center">
                 <Form>
                     <Form.Group>
