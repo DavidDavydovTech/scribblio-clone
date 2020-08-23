@@ -10,10 +10,7 @@ class CreateLobbyPage extends React.Component {
         this.state = {
             playerObject: null,
             gameObject: null
-
         }
-        
-        
     }
 
     updatePlayerObject = (object) => {

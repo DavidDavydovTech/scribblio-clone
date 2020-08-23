@@ -6,28 +6,40 @@ class Host {
         this._peer = new Peer();  
         this.player = playerObject;
         this.rules = rulesObject;
-
-        this.initHost();
+        this._gameRunning = true;
+        this._gameTickRate = 33;
+        this._gameTickFunc = () => {
+            alert("ERROR: HOST TICK FUNCTION NOT SET");
+            this._gameRunning = false;
+        };
     }
 
-    async initHost ()  {
+    initHost ()  {
         this._peer.on('open', function(id) {
             this._id = id;
-            alert(this._id)
+            return id;
         });
     }
 
-    verifyPlayerObject (playerObject) {
-        // Example of valid playerObject:
-        // let obj = {
-        //     id: 121204812048124091240,
-        //     name: "American Idi",
-        //     avatar: {
-        //         eyes: 'suspicious',
-        //         mouth: 'happy-v',
-        //         body: 'blue-striped'
-        //     }
-        // }
+    GameTick () {
+        
+        this._gameTickFunc();
+    }
+
+    GameRun () {
+        if(this._gameTickRate > 66){
+            alert("WARNING, GAME TRIED TO RUN WITH A TICKRATE HIGHER THAN 66!");
+            this._gameRunning = false;
+        } else {
+            this._gameTickFunc = () => {
+                if(this._gameRunning) {
+                    setTimeout(GameTick, 1000/33);
+                }
+            }
+    
+            this.GameTick();
+        }
+
     }
 }
 // Peer code here:
