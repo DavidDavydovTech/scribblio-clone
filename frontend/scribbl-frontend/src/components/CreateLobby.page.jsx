@@ -8,20 +8,28 @@ class CreateLobbyPage extends React.Component {
         super(props);
 
         this.state = {
-            playerObject: null
+            playerObject: null,
+            gameObject: null
         }
     }
 
     updatePlayerObject = (object) => {
-        console.log(object)
         this.setState({playerObject: object});
     }
 
-    render () { return (<Row>
-        <Col>
+    updateGameObject = (object) => {
+        this.setState({gameObject: object});
+    }
+
+    render () { return (<Row className="d-flex justify-content-center">
+        <Col xs={"auto"}>
             <h1>Create a Lobby!</h1>
+        </Col>
+        
+        <Col xs={10}>
+        
             <CreatePlayer onSubmit={this.updatePlayerObject}/>
-            <CreateGameForm/>
+            <CreateGameForm onSubmit={this.updateGameObject}/>
         </Col>
     </Row>) }
 }
