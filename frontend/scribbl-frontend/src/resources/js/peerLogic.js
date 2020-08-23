@@ -93,7 +93,14 @@ class Host {
             vars.eventName = "pick";
 
         }
+
         vars.eventTimeStart = Date.now();
+
+
+    }
+
+    GamePushToEmits (object) {
+        this._gameEmits.push(object);
     }
     
 }
