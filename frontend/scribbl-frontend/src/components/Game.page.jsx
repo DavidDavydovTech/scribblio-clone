@@ -2,7 +2,7 @@ import React from 'react';
 import {Container, Row, Col, Table} from 'react-bootstrap';
 import Peer from 'peerjs';
 
-class LobbyBrowser extends React.Component {
+class Game extends React.Component {
     constructor () {
         super();
 
@@ -38,4 +38,4 @@ class LobbyBrowser extends React.Component {
     </>)}
 }
 
-export default LobbyBrowser;
+export default Game;
