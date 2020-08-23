@@ -1,13 +1,13 @@
 import React from 'react';
 import {Container, Row, Col, Table} from 'react-bootstrap';
+import Peer from 'peerjs';
+
 class LobbyBrowser extends React.Component {
     constructor () {
         super();
 
         this.state = {
             canvasRef:  React.createRef(),
-            ctx: null,
-            el: null,
         }
     }
 
@@ -16,13 +16,16 @@ class LobbyBrowser extends React.Component {
     }
 
     initalizeCanvas () {
-        let context = this.state.canvasRef.current.getContext('2d');
-        let element = this.state.canvasRef.current;
-        this.setState({
-            ctx: context, 
-            el: element
-        });
+        this.ctx = this.state.canvasRef.current.getContext('2d');
+        this.el = this.state.canvasRef.current;
+
+        this.ctx.fillStyle = '#f0f0f0'
+        this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
     }
+
+    // enableDrawing () {
+
+    // }
 
     render () {return(<>
         <Container>
