@@ -21,6 +21,8 @@ class Game extends React.Component {
 
         this.ctx.fillStyle = '#f0f0f0'
         this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+
+        let test = new Host({name: "david", avatar: {}})
     }
 
     // enableDrawing () {

@@ -7,14 +7,16 @@ class Host {
         this.player = playerObject;
         this.rules = rulesObject;
 
-        this._peer.on('open', function(id) {
-            this._id = id;
-        });
-
-        alert(this._id)
+        this.initHost();
     }
 
-    open
+    async initHost ()  {
+        this._peer.on('open', function(id) {
+            this._id = id;
+            alert(this._id)
+        });
+    }
+
     verifyPlayerObject (playerObject) {
         // Example of valid playerObject:
         // let obj = {
@@ -29,3 +31,5 @@ class Host {
     }
 }
 // Peer code here:
+
+export default Host;
