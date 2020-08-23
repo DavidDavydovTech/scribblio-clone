@@ -21,6 +21,7 @@ class CreateGameForm extends React.Component {
     handleChange = (event) => {
         let newValue = this.checkInput(event.target.id, event.target.value)
         this.setState({[event.target.id]: newValue});
+        this.submitData()
     }
 
     checkInput = (valueName, newValue) => {
@@ -74,10 +75,7 @@ class CreateGameForm extends React.Component {
                     players: this.state.players,
                     time: this.state.time
                 });
-        } else {
-            alert("Error, could not submit!")
         }
-
     }   
 
     // TODO: Make mapping function, you could combine this component and CreatePlayerForm in to 1 dynamic component!
@@ -127,8 +125,6 @@ class CreateGameForm extends React.Component {
                         </Form.Text>
                     </Form.Group>
                 </Form>
-
-                <Button onClick={this.submitData}>click me</Button>
             </Card.Body>
         </Card>
     );}

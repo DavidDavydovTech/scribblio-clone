@@ -16,6 +16,7 @@ class CreatePlayerForm extends React.Component {
     handleChange = (event) => {
         let newValue = this.checkInput(event.target.id, event.target.value)
         this.setState({[event.target.id]: newValue});
+        this.submitData();
     }
 
     checkInput = (valueName, newValue) => {
@@ -40,8 +41,6 @@ class CreatePlayerForm extends React.Component {
                 this.props.onSubmit({
                     name: this.state.name,
                 });
-        } else {
-            alert("Error, could not submit!")
         }
     }
 
@@ -55,15 +54,14 @@ class CreatePlayerForm extends React.Component {
                             id = "name"
                             value={this.state.name}
                             onChange={this.handleChange}
-                            placeholder="Bob" 
+                            placeholder={randomName.first()}
+                            autoComplete="off"
                         />
                         <Form.Text className="text-muted">
                             {this.state.nameError}
                         </Form.Text>
                     </Form.Group>
                 </Form>
-
-                <Button onClick={this.submitData}>Create Player</Button>
             </Card.Body>
         </Card>
     );}
