@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Card, Button, Form } from 'react-bootstrap';
+import { Row, Col, Card, Button, Form, ButtonGroup} from 'react-bootstrap';
 import CreatePlayer from './CreatePlayerForm';
 import CreateGameForm from './CreateGameForm';
 
@@ -10,7 +10,10 @@ class CreateLobbyPage extends React.Component {
         this.state = {
             playerObject: null,
             gameObject: null
+
         }
+        
+        
     }
 
     updatePlayerObject = (object) => {
@@ -32,10 +35,19 @@ class CreateLobbyPage extends React.Component {
         </Col>
 
         <Col xs={"auto"}>
-            <Button size="lg">
-                Copy Link!
-            </Button>
+            <ButtonGroup>
+                <Button size="lg">
+                    Copy Link!
+                </Button>
+
+                <Button size="lg">
+                    Play Game!
+                </Button>
+            </ButtonGroup>
+
         </Col>
+
+
     </>) }
 }
 

@@ -18,6 +18,14 @@ class CreateGameForm extends React.Component {
         }
     }
 
+    componentDidMount () {
+        this.props.onSubmit({
+            rounds: this.state.rounds,
+            players: this.state.players,
+            time: this.state.time
+        });
+    }
+    
     handleChange = (event) => {
         let newValue = this.checkInput(event.target.id, event.target.value)
         this.setState({[event.target.id]: newValue});
