@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container, Row, Col, Table} from 'react-bootstrap';
-import Peer from 'peerjs';
+import Host from '../resources/js/peerLogic';
 
 class Game extends React.Component {
     constructor () {

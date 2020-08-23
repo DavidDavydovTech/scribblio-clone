@@ -7,9 +7,11 @@ class Host {
         this.player = playerObject;
         this.rules = rulesObject;
 
-        peer.on('open', function(id) {
+        this._peer.on('open', function(id) {
             this._id = id;
         });
+
+        alert(this._id)
     }
 
     open
