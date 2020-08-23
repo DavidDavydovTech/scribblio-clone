@@ -1,8 +1,9 @@
 import React from 'react';
 import { Row, Col, Card, Button, Form } from 'react-bootstrap';
 import CreatePlayer from './CreatePlayer';
+import CreateLobby from './CreateLobby';
 
-class createLobby extends React.Component {
+class CreateLobbyPage extends React.Component {
     constructor (props) {
         super(props);
 
@@ -19,8 +20,9 @@ class createLobby extends React.Component {
         <Col>
             <h1>Create a Lobby!</h1>
             <CreatePlayer onSubmit={this.updatePlayerObject}/>
+            <CreateLobby/>
         </Col>
     </Row>) }
 }
 
-export default createLobby;
+export default CreateLobbyPage;
