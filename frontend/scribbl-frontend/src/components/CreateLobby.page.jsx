@@ -27,9 +27,14 @@ class CreateLobbyPage extends React.Component {
         </Col>
         
         <Col xs={10}>
-        
             <CreatePlayer onSubmit={this.updatePlayerObject}/>
             <CreateGameForm onSubmit={this.updateGameObject}/>
+        </Col>
+
+        <Col xs={"auto"}>
+            <Button size="lg">
+                Copy Link!
+            </Button>
         </Col>
     </>) }
 }
