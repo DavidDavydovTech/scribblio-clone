@@ -1,27 +1,26 @@
 import React from 'react';
 import { Row, Col, Card, Button, Form } from 'react-bootstrap';
+import CreatePlayer from './CreatePlayer';
+
 class createLobby extends React.Component {
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
+
+        this.state = {
+            playerObject: null
+        }
     }
 
-
+    updatePlayerObject = (object) => {
+        console.log(object)
+        this.setState({playerObject: object});
+        console.log(this.state.playerObject)
+    }
 
     render () { return (<Row>
         <Col>
             <h1>Create a Lobby!</h1>
-            <Card>
-                <Card.Body className="align-content-center">
-                    <Form>
-                        <Form.Group controlId="playerInfo">
-                            <Form.Label>Player Name</Form.Label>
-                            <Form.Control type="email" placeholder="SuperMan67" />
-                        </Form.Group>
-                    </Form>
-
-                    <Button onClick={}>click me</Button>
-                </Card.Body>
-            </Card>
+            <CreatePlayer onSubmit={this.updatePlayerObject}/>
         </Col>
     </Row>) }
 }
