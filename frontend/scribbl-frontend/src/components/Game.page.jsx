@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, Table} from 'react-bootstrap';
+import {Container, Row, Col, Table, Card} from 'react-bootstrap';
 import Host from '../resources/js/peerLogic';
 
 class Game extends React.Component {
@@ -30,13 +30,21 @@ class Game extends React.Component {
     // }
 
     render () {return(<>
-        <Container>
-            <Row>
-                <Col>
-                    <canvas ref={this.state.canvasRef} className="white-board"></canvas>
-                </Col>
-            </Row>
-        </Container>
+        <Col xs ={12}>
+        
+        </Col>
+        <Col xs={"auto"}>
+            <Card>
+                <canvas ref={this.state.canvasRef} className="white-board"></canvas>
+            </Card>
+        </Col>
+        <Col>
+            <Card>
+                <Card.Body className="chat-box">
+
+                </Card.Body>
+            </Card>
+        </Col>
     </>)}
 }
 
