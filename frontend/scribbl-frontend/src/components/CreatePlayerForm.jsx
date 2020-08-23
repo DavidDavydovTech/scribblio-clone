@@ -20,12 +20,12 @@ class CreatePlayerForm extends React.Component {
 
     checkInput = (valueName, newValue) => {
 
-        if (valueName === 'rounds') {
-            if (typeof valueName !== 'string') {
+        if (valueName === 'name') {
+            if (typeof newValue !== 'string') {
                 return this.state[valueName];
-            } else if (valueName.length < 3) {
+            } else if (newValue.length < 3) {
                 this.setState({[valueName + "Error"]: "Your name must be at least 3 characters long!"});
-            } else if (valueName.length > 14) {
+            } else if (newValue.length > 14) {
                 this.setState({[valueName + "Error"]: "Your name can't be longer than 14 characters long!"});
             } else {
                 this.setState({[valueName + "Error"]: ""});
@@ -58,7 +58,7 @@ class CreatePlayerForm extends React.Component {
                             placeholder="Bob" 
                         />
                         <Form.Text className="text-muted">
-                            {this.nameError}
+                            {this.state.nameError}
                         </Form.Text>
                     </Form.Group>
                 </Form>
