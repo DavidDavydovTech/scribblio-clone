@@ -13,20 +13,20 @@ import './resources/css/bootstrap.min.css';
 
 import LobbyBrowser from './components/LobbyBrowser.page';
 import Game from './components/Game.page';
+import CreateLobby from './components/CreateLobby.page';
 
 function App() {
   return (
     <Router>
     {/* <Link to="/modus-create">Modus Create</Link> */}
       <Container className="background">
-        wd
         <Switch>
           <Route path="/joinLobby/id">
             <Game/>
           </Route>
 
           <Route path="/create">
-            <Game/>
+            <CreateLobby/>
           </Route>
 
           <Route path="/lobby/:id">
