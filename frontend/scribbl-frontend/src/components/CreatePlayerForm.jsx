@@ -8,6 +8,7 @@ class CreatePlayerForm extends React.Component {
         super(props);
 
         this.state = {
+            cardGlow: "",
             name: `${randomName.first()}`,
             nameError: ""
         }
@@ -38,14 +39,19 @@ class CreatePlayerForm extends React.Component {
 
     submitData = () => {
         if (this.state.nameError.length === 0) {
-                this.props.onSubmit({
-                    name: this.state.name,
-                });
+            this.props.onSubmit({
+                name: this.state.name,
+            });
+            // TODO: Fix this lagging behind...
+            //this.setState({cardGlow: "success"});
+        } else {
+            // TODO: Fix needing to call this twice to update card...
+            //this.setState({cardGlow: ""})
         }
     }
 
-    render () { return (
-        <Card className="m-4">
+    render () { return (<>
+        <Card border={this.state.cardGlow} className="m-4">
             <Card.Header className="text-center">
                 Lobby Options
             </Card.Header>
@@ -67,7 +73,7 @@ class CreatePlayerForm extends React.Component {
                 </Form>
             </Card.Body>
         </Card>
-    );}
+    </>);}
 }
 
 export default CreatePlayerForm;
