@@ -12,9 +12,7 @@ class createLobby extends React.Component {
     }
 
     updatePlayerObject = (object) => {
-        console.log(object)
         this.setState({playerObject: object});
-        console.log(this.state.playerObject)
     }
 
     render () { return (<Row>

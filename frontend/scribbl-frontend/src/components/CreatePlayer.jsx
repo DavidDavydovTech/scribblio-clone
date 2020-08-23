@@ -1,5 +1,6 @@
 import React from 'react';
-import { Row, Col, Card, Button, Form } from 'react-bootstrap';
+import { Card, Button, Form } from 'react-bootstrap';
+
 class CreatePlayer extends React.Component {
     constructor (props) {
         super(props);
@@ -11,7 +12,7 @@ class CreatePlayer extends React.Component {
         }
     }
 
-    prepareLobby = () => {
+    preparePlayerObject = () => {
         let name = this.state.refs.name.current.value;
         switch (true) {
             case typeof name === 'number':
@@ -25,6 +26,7 @@ class CreatePlayer extends React.Component {
                 // TODO: Add error handling for this form.
             // TODO: Add a check to see if user has a curse word in their name.
         }
+
         this.props.onSubmit(name);
     }   
 
@@ -38,7 +40,7 @@ class CreatePlayer extends React.Component {
                     </Form.Group>
                 </Form>
 
-                <Button onClick={this.prepareLobby}>click me</Button>
+                <Button onClick={this.preparePlayerObject}>click me</Button>
             </Card.Body>
         </Card>
     );}
