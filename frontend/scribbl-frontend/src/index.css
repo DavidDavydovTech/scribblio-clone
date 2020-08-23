@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
+  min-height: 100vh;
+}

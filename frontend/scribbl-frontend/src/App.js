@@ -6,6 +6,7 @@ import {
   Link,
   useParams
 } from "react-router-dom";
+import {Container, Row, Col} from 'react-bootstrap';
 
 import './App.css';
 import './resources/css/bootstrap.min.css';
@@ -16,30 +17,24 @@ import Game from './components/Game.page';
 function App() {
   return (
     <Router>
-      <div>
-        <h2>Accounts</h2>
-
-        <ul>
-          <li>
-            <Link to="/netflix">Netflix</Link>
-          </li>
-          <li>
-            <Link to="/zillow-group">Zillow Group</Link>
-          </li>
-          <li>
-            <Link to="/yahoo">Yahoo</Link>
-          </li>
-          <li>
-            <Link to="/modus-create">Modus Create</Link>
-          </li>
-        </ul>
-
+    {/* <Link to="/modus-create">Modus Create</Link> */}
+      <Container className="background">
+        wd
         <Switch>
-          <Route path="/:id">
+          <Route path="/joinLobby/id">
             <Game/>
           </Route>
+
+          <Route path="/create">
+            <Game/>
+          </Route>
+
+          <Route path="/lobby/:id">
+            <Game/>
+          </Route>
+
         </Switch>
-      </div>
+      </Container>
     </Router>
   );
 }
