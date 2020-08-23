@@ -11,7 +11,6 @@ import {Container, Row, Col} from 'react-bootstrap';
 import './App.css';
 import './resources/css/bootstrap.min.css';
 
-import LobbyBrowser from './components/LobbyBrowser.page';
 import Game from './components/Game.page';
 import CreateLobby from './components/CreateLobby.page';
 

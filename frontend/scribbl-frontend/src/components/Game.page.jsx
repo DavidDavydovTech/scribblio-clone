@@ -3,8 +3,8 @@ import {Container, Row, Col, Table} from 'react-bootstrap';
 import Host from '../resources/js/peerLogic';
 
 class Game extends React.Component {
-    constructor () {
-        super();
+    constructor (props) {
+        super(props);
 
         this.state = {
             canvasRef:  React.createRef(),

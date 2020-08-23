@@ -10,7 +10,6 @@ class CreatePlayer extends React.Component {
     }
 
     prepareLobby = () => {
-        console.log(this.props)
         this.props.onSubmit(this.state.name);
     }   
 
