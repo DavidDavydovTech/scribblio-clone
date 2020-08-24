@@ -32,6 +32,10 @@ class Game extends React.Component {
         this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
 
         let test = new Host({name: "david", avatar: {}})
+
+        // this.el.mouseDown(() => {
+        //     alert("k")
+        // })
     }
 
     // enableDrawing () {
@@ -54,18 +58,21 @@ class Game extends React.Component {
                     <canvas ref={this.state.canvasRef} className="white-board"></canvas>
                 </Card.Body>
                 <Card.Footer className="d-flex w-100 align-self-center justify-content-center">
-                    <ButtonGroup>
-                        {this.state.colors.map((color) => {
-                            return <Button
-                            style={{
-                                backgroundColor: `#${color}`,
-                                borderColor: `#${color}`,
-                                color: `#${color}`
-                            }}>
-                                @
-                            </Button>
-                        })}
-                    </ButtonGroup>
+                    <Col xs={"auto"}>
+                        <ButtonGroup>
+                            {this.state.colors.map((color) => {
+                                return <Button
+                                style={{
+                                    backgroundColor: `#${color}`,
+                                    borderColor: `#${color}`, //TODO: install 'npm i color' and make these buttons pop out like the rest!
+                                    color: `#${color}`
+                                }}>
+                                    @
+                                </Button>
+                            })}
+                        </ButtonGroup>
+                    </Col>
+
                 </Card.Footer>
             </Card>
         </Col>
