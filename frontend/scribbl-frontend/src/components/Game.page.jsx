@@ -96,6 +96,10 @@ class Game extends React.Component {
     updateColor = (e) => {
         this.ctx.strokeStyle = `#${e.target.id}`;
     }
+
+    updateSize = (e) => {
+        this.ctx.lineWidth = this.state.canvasSize.y * e.target.id;
+    }
     // enableDrawing () {
 
     // }
@@ -123,6 +127,19 @@ class Game extends React.Component {
                 </Card.Body>
                 
                 <Card.Footer className="d-flex w-100 align-self-center justify-content-center">
+                    <Col xs={"auto"}>
+                        <ButtonGroup>
+                            {[0.005, 0.01, 0.015].map((size) => {
+                                return <Button
+                                className='p-t-0 p-b-0'
+                                id = {size}
+                                onClick={this.updateSize}
+                                >
+                                    <b style={{fontSize: `${(4 + 3*size*200)}px`}}>●</b>
+                                </Button>
+                            })}
+                        </ButtonGroup>
+                    </Col>
                     <Col xs={"auto"}>
                         <ButtonGroup>
                             {this.state.colors.map((color) => {
