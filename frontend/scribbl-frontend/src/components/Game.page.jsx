@@ -28,9 +28,9 @@ class Game extends React.Component {
 
         window.addEventListener('resize', () => {
             this.state.canvasSize = {
-                    x: window.innerWidth*0.5,
-                    y: window.innerWidth*0.375
-                }
+                x: window.innerWidth*0.5,
+                y: window.innerWidth*0.375
+            }
         });
     }
 
@@ -44,30 +44,13 @@ class Game extends React.Component {
         let points = [];
         this.ctx = this.state.canvasRef.current.getContext('2d');
         this.el = this.state.canvasRef.current;
+        
         this.ctx.fillStyle = '#ffffff'
         this.ctx.strokeStyle = "#1b1c33";
         this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+        
+        this.ctx.lineWidth = this.state.canvasSize.y * 0.01;
 
-        if(this.state.points) {
-            this.state.points.forEach((pointsArray) => {
-                let boundingBox = this.el.getBoundingClientRect();
-                this.ctx.beginPath();
-                pointsArray.forEach((value, i) => {
-                    if (i === 0) {
-                        this.ctx.moveTo(
-                            value.x - boundingBox.x, 
-                            value.y - boundingBox.y, 
-                        );
-                    } else {
-                        this.ctx.lineTo(
-                            value.x - boundingBox.x, 
-                            value.y - boundingBox.y, 
-                        );
-                    }
-                })
-                this.ctx.stroke();
-            })
-        }
         this.el.onmousedown = (e) => {
             isDrawing = true;
             points.push({ x: e.clientX, y: e.clientY });
@@ -76,24 +59,7 @@ class Game extends React.Component {
         this.el.onmousemove = (e) => {
             if (isDrawing) {
                 points.push({ x: e.clientX, y: e.clientY });
-
-                let boundingBox = this.el.getBoundingClientRect();
-                this.ctx.beginPath();
-                points.forEach((value, i) => {
-                    if (i === 0) {
-                        this.ctx.moveTo(
-                            value.x - boundingBox.x, 
-                            value.y - boundingBox.y, 
-                        );
-                    } else {
-                        this.ctx.lineTo(
-                            value.x - boundingBox.x, 
-                            value.y - boundingBox.y, 
-                        );
-                    }
-                })
-                this.ctx.stroke();
-                
+                this.drawPoints(points);
             }
         }
 
@@ -102,11 +68,34 @@ class Game extends React.Component {
             let pointsHistory = this.state.points;
             pointsHistory.push(points);
             this.setState({points: pointsHistory});
+            console.log(pointsHistory)
             points = [];
         }
         // let test = new Host({name: "david", avatar: {}})
     }
 
+    drawPoints = (array) => {
+        let boundingBox = this.el.getBoundingClientRect();
+        this.ctx.beginPath();
+        array.forEach((value, i) => {
+            if (i === 0) {
+                this.ctx.moveTo(
+                    value.x - boundingBox.x, 
+                    value.y - boundingBox.y, 
+                );
+            } else {
+                this.ctx.lineTo(
+                    value.x - boundingBox.x, 
+                    value.y - boundingBox.y, 
+                );
+            }
+        })
+        this.ctx.stroke();
+    }
+
+    updateColor = (e) => {
+        this.ctx.strokeStyle = `#${e.target.id}`;
+    }
     // enableDrawing () {
 
     // }
@@ -128,8 +117,8 @@ class Game extends React.Component {
                     <canvas 
                     ref={this.state.canvasRef} 
                     className="white-board"
-                    width={this.state.canvasSize.x} 
-                    height={this.state.canvasSize.y}
+                    width={window.innerWidth*0.5}
+                    height={window.innerWidth*0.375}
                     ></canvas>
                 </Card.Body>
                 
@@ -138,6 +127,8 @@ class Game extends React.Component {
                         <ButtonGroup>
                             {this.state.colors.map((color) => {
                                 return <Button
+                                id = {color}
+                                onClick={this.updateColor}
                                 style={{
                                     backgroundColor: `#${color}`,
                                     borderColor: `#${color}`, //TODO: install 'npm i color' and make these buttons pop out like the rest!
