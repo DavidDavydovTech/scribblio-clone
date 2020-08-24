@@ -24,3 +24,7 @@ code {
 .btn-group{
   filter:drop-shadow(5px 5px 8px rgba(0,0,0,0.27));
 }
+
+.btn-group .btn{
+  filter:drop-shadow(5px 5px 8px rgba(0,0,0,0.0));
+}
