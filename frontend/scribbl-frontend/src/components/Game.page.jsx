@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Card, InputGroup, FormControl, Button} from 'react-bootstrap';
+import { Col, Card, InputGroup, FormControl, Button, ButtonGroup} from 'react-bootstrap';
 import Host from '../resources/js/peerLogic';
 
 class Game extends React.Component {
@@ -8,6 +8,15 @@ class Game extends React.Component {
 
         this.state = {
             canvasRef:  React.createRef(),
+            colors: [ // https://lospec.com/palette-list/endesga-8
+                "1b1c33",
+                "d32734",
+                "da7d22",
+                "e6da29",
+                "28c641",
+                "2d93dd",
+                "7b53ad",
+            ]
         }
     }
 
@@ -33,6 +42,7 @@ class Game extends React.Component {
         <Col xs ={12}>
         
         </Col>
+
         <Col xs={"auto"} >
             <Card>
                 <Card.Header className="d-flex w-100 align-self-center justify-content-between">
@@ -44,10 +54,22 @@ class Game extends React.Component {
                     <canvas ref={this.state.canvasRef} className="white-board"></canvas>
                 </Card.Body>
                 <Card.Footer className="d-flex w-100 align-self-center justify-content-center">
-                    Tools
+                    <ButtonGroup>
+                        {this.state.colors.map((color) => {
+                            return <Button
+                            style={{
+                                backgroundColor: `#${color}`,
+                                borderColor: `#${color}`,
+                                color: `#${color}`
+                            }}>
+                                @
+                            </Button>
+                        })}
+                    </ButtonGroup>
                 </Card.Footer>
             </Card>
         </Col>
+
         <Col xs={"auto"} className="d-flex align-items-stretch">
             <Card className="w-100">
                 <Card.Header className="d-flex w-100 align-self-center justify-content-center">
@@ -65,7 +87,7 @@ class Game extends React.Component {
                             aria-describedby="btnGroupAddon2"
                         />
                         <InputGroup.Append>
-                            <Button>@</Button>
+                            <Button>+</Button>
                             {/* <InputGroup.Text id="btnGroupAddon2">@</InputGroup.Text> */}
                         </InputGroup.Append>
                     </InputGroup>
