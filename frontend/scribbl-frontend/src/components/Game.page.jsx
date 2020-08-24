@@ -20,15 +20,17 @@ class Game extends React.Component {
             canvasSize: {
                 x: window.innerWidth*0.5,
                 y: window.innerWidth*0.375
-            }
+            },
+            points: [
+
+            ]
         }
 
         window.addEventListener('resize', () => {
-            this.setState({
-                canvasSize: {
+            this.state.canvasSize = {
                     x: window.innerWidth*0.5,
                     y: window.innerWidth*0.375
-                }})
+                }
         });
     }
 
@@ -38,21 +40,37 @@ class Game extends React.Component {
     }
 
     initalizeCanvas () {
-        this.ctx = this.state.canvasRef.current.getContext('2d');
-        this.el = this.state.canvasRef.current;
-
-        this.ctx.fillStyle = '#ffffff'
-        this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
-
         let isDrawing = false;
         let points = [];
-        this.ctx.strokeStyle = "#1b1c33";
+        this.ctx = this.state.canvasRef.current.getContext('2d');
+        this.el = this.state.canvasRef.current;
         this.ctx.fillStyle = '#ffffff'
-        
+        this.ctx.strokeStyle = "#1b1c33";
+        this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height)
+
+        if(this.state.points) {
+            this.state.points.forEach((pointsArray) => {
+                let boundingBox = this.el.getBoundingClientRect();
+                this.ctx.beginPath();
+                pointsArray.forEach((value, i) => {
+                    if (i === 0) {
+                        this.ctx.moveTo(
+                            value.x - boundingBox.x, 
+                            value.y - boundingBox.y, 
+                        );
+                    } else {
+                        this.ctx.lineTo(
+                            value.x - boundingBox.x, 
+                            value.y - boundingBox.y, 
+                        );
+                    }
+                })
+                this.ctx.stroke();
+            })
+        }
         this.el.onmousedown = (e) => {
             isDrawing = true;
             points.push({ x: e.clientX, y: e.clientY });
-            console.log("down")
         }
 
         this.el.onmousemove = (e) => {
@@ -81,6 +99,9 @@ class Game extends React.Component {
 
         this.el.onmouseup = (e) => {
             isDrawing = false;
+            let pointsHistory = this.state.points;
+            pointsHistory.push(points);
+            this.setState({points: pointsHistory});
             points = [];
         }
         // let test = new Host({name: "david", avatar: {}})
